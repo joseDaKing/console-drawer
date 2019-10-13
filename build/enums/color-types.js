@@ -1,0 +1,25 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var COLOR_TYPES;
+(function (COLOR_TYPES) {
+    COLOR_TYPES["BLACK"] = "black";
+    COLOR_TYPES["RED"] = "red";
+    COLOR_TYPES["GREEN"] = "green";
+    COLOR_TYPES["YELLOW"] = "yellow";
+    COLOR_TYPES["BLUE"] = "blue";
+    COLOR_TYPES["MAGENTA"] = "magenta";
+    COLOR_TYPES["CYAN"] = "cyan";
+    COLOR_TYPES["WHITE"] = "white";
+    COLOR_TYPES["gray"] = "gray";
+    COLOR_TYPES["grey"] = "grey";
+    COLOR_TYPES["BG_BLACK"] = "bgBlack";
+    COLOR_TYPES["BG_RED"] = "bgRed";
+    COLOR_TYPES["BG_GREEN"] = "bgGreen";
+    COLOR_TYPES["BG_YELLOW"] = "bgYellow";
+    COLOR_TYPES["BG_BLUE"] = "bgBlue";
+    COLOR_TYPES["BG_MAGENTA"] = "bgMagenta";
+    COLOR_TYPES["BG_CYAN"] = "bgCyan";
+    COLOR_TYPES["BG_WHITE"] = "bgWhite";
+})(COLOR_TYPES || (COLOR_TYPES = {}));
+;
+exports.default = COLOR_TYPES;

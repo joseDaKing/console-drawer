@@ -1,0 +1,27 @@
+{
+  "name": "canvas-drawer",
+  "version": "1.0.0",
+  "description": "The package used for drawing figures in cmd, terminal, bash and etc by console.log:ing",
+  "main": "./index",
+  "scripts": {
+    "watch:ts": "tsc -w",
+    "watch:js": "nodemon ./build",
+    "watch:jest": "jest --config ./jest.config.js -w",
+    "run:doc": "typedoc --name Console-drawer --out ./documentation ./src"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joseDaKing/console-drawer"
+  },
+  "keywords": [
+    "draw",
+    "canvas"
+  ],
+  "author": "Yousef Abdulkarim",
+  "license": "ISC",
+  "dependencies": {
+    "ansi-colors": "^4.1.1"
+  },
+  "devDependencies": {}
+}
