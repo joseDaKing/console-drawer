@@ -152,12 +152,10 @@ var Geometry = /** @class */ (function () {
      */
     Geometry.prototype._rotate = function (degrees) {
         var _this = this;
-        console.log(this._vertices);
         this._vertices = this._vertices.map(function (vertice) {
             var rotation = getLineRotation_1.default([_this._origin, vertice]);
             var length = getLineLength_1.default([_this._origin, vertice]);
             var newRotation = rotation + degrees;
-            console.log("r", newRotation);
             var newVertice = getLinePositions_1.default({
                 position: _this._origin,
                 rotation: newRotation,
@@ -165,7 +163,6 @@ var Geometry = /** @class */ (function () {
             }).end;
             return newVertice;
         });
-        console.log(this._vertices);
         this._rotation += degrees;
     };
     /**

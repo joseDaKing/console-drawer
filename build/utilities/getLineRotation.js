@@ -11,16 +11,15 @@ var getLineLength_1 = __importDefault(require("./getLineLength"));
  */
 var getLineRotation = function (positions) {
     var start = positions[0], end = positions[1];
-    var yStart = start.y;
-    var yEnd = end.y;
-    var height = (yStart - yEnd);
+    var yStart = start.y, xStart = start.x;
+    var yEnd = end.y, xEnd = end.x;
+    var height = yEnd - yStart;
     var length = getLineLength_1.default(positions);
     var radians = Math.asin(height / length);
-    var degrees = radians / Math.PI * 180;
-    if (isNaN(degrees))
-        return 0;
-    if (degrees < 0)
-        return 360 - degrees;
+    var degrees = radians * 180 / Math.PI;
+    if (xEnd < xStart) {
+        degrees = 180 - degrees;
+    }
     return degrees;
 };
 exports.default = getLineRotation;

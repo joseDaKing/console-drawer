@@ -212,8 +212,6 @@ class Geometry {
      * @param degrees the amount of relative rotation in degrees
      */
     protected _rotate(degrees: number): void {
-        
-        console.log(this._vertices);
 
         this._vertices = this._vertices.map((vertice: Position) => {
             
@@ -221,8 +219,8 @@ class Geometry {
 
             const length: number = getLineLength([this._origin, vertice]);
 
-            const newRotation = rotation + degrees;
-            console.log("r", newRotation);
+            const newRotation: number = rotation + degrees;
+            
             const {
                 end: newVertice
             } = getLinePositions({
@@ -233,8 +231,6 @@ class Geometry {
 
             return newVertice;
         });
-
-        console.log(this._vertices);
 
         this._rotation += degrees;
     }

@@ -12,24 +12,26 @@ const getLineRotation = (positions: LinePosition): number => {
     const [start, end] = positions;
 
     const {
-        y: yStart
+        y: yStart,
+        x: xStart
     } = start;
 
     const {
-        y: yEnd 
+        y: yEnd,
+        x: xEnd
     } = end;
 
-    const height: number = (yStart - yEnd);
+    const height: number = yEnd - yStart;
 
     const length: number = getLineLength(positions);
 
     const radians: number = Math.asin(height/length);
 
-    const degrees: number = radians / Math.PI * 180;
-
-    if (isNaN(degrees)) return 0;
-
-    if (degrees < 0) return 360 - degrees;
+    let degrees: number = radians * 180 / Math.PI;
+    
+    if (xEnd < xStart) {
+        degrees = 180 - degrees;
+    }
 
     return degrees;
 }
