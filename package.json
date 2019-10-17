@@ -20,8 +20,7 @@
   "author": "Yousef Abdulkarim",
   "license": "ISC",
   "dependencies": {
-    "ansi-colors": "^4.1.1",
-    "raf": "^3.4.1"
+    "ansi-colors": "^4.1.1"
   },
   "devDependencies": {}
 }

@@ -3,7 +3,6 @@ import mixin from "../utilities/mixin";
 
 /**
  * Mixin transform class used for applying the Transformation of the geometric shape
- * [[Apply]]
  * @category Transfrom class
  */
 @mixin(DummyData)
