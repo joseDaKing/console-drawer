@@ -13,7 +13,8 @@ var __assign = (this && this.__assign) || function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 // Code
 /**
- * @class Used for createing a canvas that can be drawn on with Pixels
+ * Used for createing a canvas that can be drawn on with Pixels
+ * @category Graphic class
  */
 var Canvas = /** @class */ (function () {
     /**

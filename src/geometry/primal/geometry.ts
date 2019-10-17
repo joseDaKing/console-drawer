@@ -1,17 +1,13 @@
-import { Position, Size, Style } from "../../types";
-
+import { Position, Size, Style, COLOR_TYPES } from "../../types";
 import getLinePositions, { getLinePositionsOptions } from "../../utilities/getLinePositions";
-
-import getLineWidth from "../../utilities/getLineWidth";
-
-import getLineHeight from "../../utilities/getLineHeight";
-import { LinePosition } from "./line";
-import getLineRotation from "../../utilities/getLineRotation";
-import getLineLength from "../../utilities/getLineLength";
+import mixin from "../../utilities/mixin";
+import Transform from "../../transform/transform";
 
 /**
- * @class The class represent a Geometry object
+ * The class represent a abstract geometry object that is defiend with vertices
+ * @category Primal geometry
  */
+@mixin(Transform)
 class Geometry {
 
     protected _vertices: Position[];
@@ -128,23 +124,6 @@ class Geometry {
     }
 
     /**
-     * @param axis The axis to translate on
-     * 
-     * @param length The length to translate
-     */
-    protected _translateBasedOnAxis(length: number, axis: "x" | "y"): void {
-
-        this._origin[axis] += length;
-
-        this._vertices.map((vertice: Position): Position => {
-            
-            vertice[axis] += length;
-
-            return vertice;
-        }); 
-    }
-
-    /**
      * @returns the scale of the geometry
      */
     public getScale(): Size {
@@ -153,95 +132,47 @@ class Geometry {
     }
 
     /**
-     * 
-     * @param scale The new scale
-     * 
-     * @param axis The axis to scale
+     * @returns the rotation of the geometry
      */
-    protected _scaleBasedOnAxis(scale: number, axis: "x" | "y"): void {
-
-        const lengthType: "width" | "height" = (
-            axis === "x"
-            ? 
-            "width" 
-            : 
-            "height"
-        );
-
-        const prevScale: number = this._scale[lengthType]; 
-
-        const origin: number = this._origin[axis];
-
-        this._vertices.map((vertice: Position) => {
-            
-            // Vertice position on specific axis
-            const verticePosition: number = vertice[axis];
-
-            const getLength: (positions: LinePosition) => number = (
-                axis === "x"
-                ?
-                getLineWidth
-                :
-                getLineHeight
-            );
-
-            // Length between origin and vertice
-            const length: number = getLength([this._origin, vertice]);
-
-            // original length between origin and vertice on specific axis
-            const originalLength: number = 1 / prevScale * length;
-
-            if (verticePosition < origin) {
-
-                vertice[axis] = origin - originalLength * scale;
-            }
-
-            if (origin < verticePosition) {
-
-                vertice[axis] = origin + originalLength * scale;
-            }
-        });
-
-        // Set new scale on specific axis for the geometry
-        this._scale[lengthType] = scale;
+    public getRotation(): number { 
+        return this._rotation;
     }
 
     /**
-     * Rotates the geometric shape 
-     * 
-     * @param degrees the amount of relative rotation in degrees
-     */
-    protected _rotate(degrees: number): void {
-
-        this._vertices = this._vertices.map((vertice: Position) => {
-            
-            const rotation: number = getLineRotation([this._origin, vertice]);
-
-            const length: number = getLineLength([this._origin, vertice]);
-
-            const newRotation: number = rotation + degrees;
-            
-            const {
-                end: newVertice
-            } = getLinePositions({
-                position: this._origin,
-                rotation: newRotation,
-                length
-            });
-
-            return newVertice;
-        });
-
-        this._rotation += degrees;
-    }
-
-    /**
-     * @returns The style for the geometry lines 
+     * @returns The style for the geometry lines
      */
     public getStyle(): Style {
 
         return this._style;
     }
+
+    /**
+     * Sets new the style of the line
+     * 
+     * @param style the new style
+     */
+    public setStyle(style: Style): void {
+        this._style = style;
+    }
+
+    /**
+     * Sets the new color of the line
+     * 
+     * @param color the new color
+     */
+    public setColor(color: COLOR_TYPES): void {
+        this._style.color = color
+    }
+
+    /**
+     * Set the new shape
+     * 
+     * @param shape The new shape
+     */
+    public setShape(shape: string): void {
+        this._style.shape = shape;
+    }
 }
+interface Geometry extends Transform {}
 
 export default Geometry;

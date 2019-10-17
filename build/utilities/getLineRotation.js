@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var getLineLength_1 = __importDefault(require("./getLineLength"));
 /**
  * Gets the rotation based on 2 position on the line
- *
+ * @category UtilitieS
  * @param positions Is array of start and end positions
  */
 var getLineRotation = function (positions) {
@@ -17,6 +17,8 @@ var getLineRotation = function (positions) {
     var length = getLineLength_1.default(positions);
     var radians = Math.asin(height / length);
     var degrees = radians * 180 / Math.PI;
+    if (isNaN(degrees))
+        return 0;
     if (xEnd < xStart) {
         degrees = 180 - degrees;
     }

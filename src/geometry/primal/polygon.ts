@@ -1,16 +1,25 @@
 import PolygonalChain from "./polygonalChain";
-
 import Line from "./line";
-
 import { Position, Style } from "../../types";
 
-
+/**
+ * The class reperesents a polygon that can be defiend with multiple vertices
+ * @category Primal geometry
+ */
 class Polygon extends PolygonalChain{
 
+    /**
+     * @param vertices The vertices of the polygon
+     * 
+     * @param style The style of the polygon lines
+     */
     constructor(vertices: Position[], style: Style) { 
         super(vertices, style);
     }
 
+    /**
+     * @returns The lines of the polygon
+     */
     protected _getLines(): Line[] {
         
         const lines: Line[] = [];

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;enums/color-types&quot; | Console-drawer</title>
+	<title>&quot;geometry/createRightTriangle&quot; | Console-drawer</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_enums_color_types_.html">&quot;enums/color-types&quot;</a>
+					<a href="_geometry_createrighttriangle_.html">&quot;geometry/createRightTriangle&quot;</a>
 				</li>
 			</ul>
-			<h1>External module &quot;enums/color-types&quot;</h1>
+			<h1>External module &quot;geometry/createRightTriangle&quot;</h1>
 		</div>
 	</div>
 </header>
@@ -70,13 +70,85 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section ">
-							<h3>Enumerations</h3>
+						<section class="tsd-index-section tsd-is-not-exported">
+							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-enum tsd-parent-kind-external-module"><a href="../enums/_enums_color_types_.color_types.html" class="tsd-kind-icon">COLOR_<wbr>TYPES</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported"><a href="_geometry_createrighttriangle_.html#createtriangleoptions" class="tsd-kind-icon">Create<wbr>Triangle<wbr>Options</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Primal geometry Functions</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_geometry_createrighttriangle_.html#createrighttriangle" class="tsd-kind-icon">create<wbr>Right<wbr>Triangle</a></li>
 							</ul>
 						</section>
 					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+				<h2>Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="createtriangleoptions" class="tsd-anchor"></a>
+					<h3>Create<wbr>Triangle<wbr>Options</h3>
+					<div class="tsd-signature tsd-kind-icon">Create<wbr>Triangle<wbr>Options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/joseDaKing/console-drawer/blob/0b31307/src/geometry/createRightTriangle.ts#L4">geometry/createRightTriangle.ts:4</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>color<span class="tsd-signature-symbol">: </span><a href="../enums/_types_index_.color_types.html" class="tsd-signature-type">COLOR_TYPES</a></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>position<span class="tsd-signature-symbol">: </span><a href="_types_index_.html#position" class="tsd-signature-type">Position</a></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>shape<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>size<span class="tsd-signature-symbol">: </span><a href="_types_index_.html#size" class="tsd-signature-type">Size</a></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Primal geometry Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="createrighttriangle" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> create<wbr>Right<wbr>Triangle</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Right<wbr>Triangle<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="_geometry_createrighttriangle_.html#createtriangleoptions" class="tsd-signature-type">CreateTriangleOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../classes/_geometry_primal_polygon_.polygon.html" class="tsd-signature-type">Polygon</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/joseDaKing/console-drawer/blob/0b31307/src/geometry/createRightTriangle.ts#L18">geometry/createRightTriangle.ts:18</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>A function that returns a polygon that represent right triangle</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>options: <a href="_geometry_createrighttriangle_.html#createtriangleoptions" class="tsd-signature-type">CreateTriangleOptions</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The options for the right triangle</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../classes/_geometry_primal_polygon_.polygon.html" class="tsd-signature-type">Polygon</a></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -87,68 +159,17 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="_enums_color_types_.html">"enums/color-<wbr>types"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_enums_index_.html">"enums/index"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_geometry_primal_geometry_.html">"geometry/primal/geometry"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_geometry_primal_index_.html">"geometry/primal/index"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_geometry_primal_line_.html">"geometry/primal/line"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_geometry_primal_polygon_.html">"geometry/primal/polygon"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_geometry_primal_polygonalchain_.html">"geometry/primal/polygonal<wbr>Chain"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_graphic_canvas_.html">"graphic/canvas"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_graphic_engine_.html">"graphic/engine"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_graphic_index_.html">"graphic/index"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_graphic_pixel_.html">"graphic/pixel"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_index_.html">"index"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_types_index_.html">"types/index"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_utilities_getlineheight_.html">"utilities/get<wbr>Line<wbr>Height"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_utilities_getlinelength_.html">"utilities/get<wbr>Line<wbr>Length"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_utilities_getlinepositions_.html">"utilities/get<wbr>Line<wbr>Positions"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_utilities_getlinerotation_.html">"utilities/get<wbr>Line<wbr>Rotation"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_utilities_getlinewidth_.html">"utilities/get<wbr>Line<wbr>Width"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_utilities_lineequation_.html">"utilities/line<wbr>Equation"</a>
+						<a href="_geometry_createrighttriangle_.html">"geometry/create<wbr>Right<wbr>Triangle"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
-						<a href="../enums/_enums_color_types_.color_types.html" class="tsd-kind-icon">COLOR_<wbr>TYPES</a>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_geometry_createrighttriangle_.html#createtriangleoptions" class="tsd-kind-icon">Create<wbr>Triangle<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="_geometry_createrighttriangle_.html#createrighttriangle" class="tsd-kind-icon">create<wbr>Right<wbr>Triangle</a>
 					</li>
 				</ul>
 			</nav>

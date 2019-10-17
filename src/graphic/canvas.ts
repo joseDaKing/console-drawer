@@ -1,10 +1,5 @@
 // Imports
-import {
-    Size,
-    Position,
-    Style
-} from "../types";
-
+import { Size,Position,Style } from "../types";
 import Pixel from "./pixel";
 
 
@@ -59,7 +54,8 @@ type  DrawOptions = Pixel[]
 // Code
 
 /**
- * @class Used for createing a canvas that can be drawn on with Pixels
+ * Used for createing a canvas that can be drawn on with Pixels
+ * @category Graphic class
  */
 class Canvas {
     

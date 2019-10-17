@@ -2,7 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 // Code
 /**
- * @class Used for definning a pixel in canvas.
+ * Used for definning a pixel in canvas
+ * @category Graphic class
  */
 var Pixel = /** @class */ (function () {
     /**

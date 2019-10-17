@@ -3,6 +3,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * @ignore
+ * @hidden
+ */
 var line_1 = __importDefault(require("./line"));
 exports.Line = line_1.default;
 var polygon_1 = __importDefault(require("./polygon"));

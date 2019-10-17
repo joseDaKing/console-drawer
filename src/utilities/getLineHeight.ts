@@ -1,9 +1,9 @@
-import {LinePosition} from "../geometry/primal/line";
+import {LinePosition} from "../types";
 
 
 /**
  * Get line height based on 2 positions of the line
- * 
+ * @category UtilitieS
  * @param positions Is array of start and end positions
  */
 const getLineHeight = (positions: LinePosition): number => {

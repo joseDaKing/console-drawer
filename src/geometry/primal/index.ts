@@ -1,3 +1,7 @@
+/**
+ * @ignore
+ * @hidden
+ */
 import Line from "./line";
 
 import Polygon from "./polygon";

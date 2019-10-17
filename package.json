@@ -7,8 +7,7 @@
     "watch:ts": "tsc -w",
     "watch:js": "nodemon ./build",
     "watch:jest": "jest --config ./jest.config.js -w",
-    "run:doc": "typedoc --name Console-drawer --out ./documentation ./src"
-
+    "doc": "typedoc --name Console-drawer --out ./documentation ./src"
   },
   "repository": {
     "type": "git",
@@ -21,7 +20,8 @@
   "author": "Yousef Abdulkarim",
   "license": "ISC",
   "dependencies": {
-    "ansi-colors": "^4.1.1"
+    "ansi-colors": "^4.1.1",
+    "raf": "^3.4.1"
   },
   "devDependencies": {}
 }

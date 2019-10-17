@@ -7,7 +7,7 @@ var getLineWidth_1 = __importDefault(require("./getLineWidth"));
 var getLineHeight_1 = __importDefault(require("./getLineHeight"));
 /**
  * Get the line length based on 2 positions of the line
- *
+ * @category UtilitieS
  * @param positions Is array of start and end positions
  */
 var getLineLength = function (positions) {

@@ -1,14 +1,13 @@
-import { Position, Style } from "../../types";
-
+import { Position, Style, COLOR_TYPES } from "../../types";
 import Geometry from "./geometry";
-
 import polygonalChain from "./line";
-
 import Pixel from "../../graphic/pixel";
-
-import COLOR_TYPES from "../../enums/color-types";
 import { Line } from ".";
 
+/**
+ * The class reperesents a polygonal chain that is defiend with multiple vertices
+ * @category Primal geometry
+ */
 class PolygonalChain extends Geometry {
 
     protected _lines: Line[];
@@ -125,11 +124,11 @@ class PolygonalChain extends Geometry {
     /**
      * Deletes vertices by index range
      * 
-     * @param start the start index
-     * 
-     * @param end the end index
+     * @param range the index range (start, end)
      */
-    public deleteVerticesByIndexRange([start, end]: [number, number]): void {
+    public deleteVerticesByIndexRange(range: [number, number]): void {
+        const [start, end] = range;
+
         this._vertices = this._vertices.filter((_, index: number) => {
             
             let willBeDeleted: boolean  = false;
@@ -231,96 +230,6 @@ class PolygonalChain extends Geometry {
     }
 
     /**
-     * Sets the scale of the polygonalChain
-     * 
-     * @param scale the new scale
-     */
-    public scale(scale: number): void {
-        
-        this.scaleX(scale);
-        
-        this.scaleY(scale);
-
-        this._setLines();
-    }
-
-    /**
-     * Sets the new y scale
-     * 
-     * @param scale the new y scale
-     */
-    public scaleY(scale: number): void {
-        
-        this._scaleBasedOnAxis(scale, "y");
-
-        this._setLines();
-    }
-
-    /**
-     * Sets the new x scale
-     * 
-     * @param scale the new x scale
-     */
-    public scaleX(scale: number): void {
-        
-        this._scaleBasedOnAxis(scale, "x");
-
-        this._setLines();
-    }
-
-    /**
-     * Translates the position of polygonalChain
-     * 
-     * @param positionAdd the added position to current location
-     */
-    public translate(positionAdd: Position): void {
-
-        const {x, y} = positionAdd;
-
-        this.translateX(x);
-        
-        this.translateY(y);
-
-        this._setLines();
-    }
-
-    /**
-     * Translate x position of polygonalChain
-     * 
-     * @param xAdd the added x position
-     */
-    public translateX(xAdd: number): void {
-
-        this._translateBasedOnAxis(xAdd, "x");
-
-        this._setLines();
-    }
-
-    /**
-     * Translate y position of polygonalChain
-     * 
-     * @param yAdd the added y position
-     */
-    public translateY(yAdd: number): void {
-
-        this._translateBasedOnAxis(yAdd, "y");
-
-        this._setLines();
-    }
-
-    /**
-     * Rotates the polygonalChain reletivly
-     * 
-     * @param degrees the added rotation to the current rotation
-     */
-    public rotate(degrees: number): void {
-        
-        this._rotate(degrees);
-
-        this._setLines();
-    }
-
-    /**
      * @returns the pixels of the polygonalChain
      */
     public getPixels(): Pixel[] {
@@ -336,10 +245,19 @@ class PolygonalChain extends Geometry {
     }
 
     /**
-     * @returns The vertices of polygonalChain
+     * @param vertices set the new vertices
      */
-    public getVertices(): Position[] {
-        return this._vertices;
+    public setVertices(vertices: Position[]): void {
+
+        const errorMessage: string = `
+        Wrong argument for the method setVertices, the argument should be Position Array of size ${this._vertices.length}
+        `.trim();
+
+        if (vertices.length !== this._vertices.length) throw Error(errorMessage);
+
+        this._vertices = vertices;
+
+        this._setLines();
     }
 }
 

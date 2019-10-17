@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Gets the start and end position by line length, rotation (degrees) and start position
- *
+ * @category UtilitieS
  * @param options Options consists of the line length, rotation and start position
  */
 var getLinePositions = function (options) {

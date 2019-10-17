@@ -1,7 +1,8 @@
 import { Position } from "../types";
 
 /**
- * @class The class is used for geting the line equation for x and y based on start end position
+ * The class is used for geting the line equation for x and y based on start end position
+ * @category UtilitieS
  */
 class LineEquation {
 

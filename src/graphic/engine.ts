@@ -4,11 +4,8 @@ import Canvas, {
     PixelsMetadata,
     Metadata
 } from "./canvas";
-
 import styles from "ansi-colors";
-import { 
-    Style
-} from "../types";
+import { Style } from "../types";
 
 
 // Types
@@ -29,20 +26,21 @@ type CanvasesWithIndex = Record <string, CanvasWithIndex>;
 // Code
 
 /**
- * @class Used for rendering a canvas
+ * Used for rendering a canvas
+ * @category Graphic class
  */
 class Engine {
 
-    private _canvases: CanvasesWithIndex = {};
+    private static _canvases: CanvasesWithIndex = {};
 
-    private _canvasAmount: number = 0;
+    private static _canvasAmount: number = 0;
 
     /**
      * Used for Adding one canvas or multiple canvanses 
      * 
      * @param canvasesToAdd Add one canvas or multipple canvases
      */
-    public addCanvas(canvasesToAdd: Canvases): void {
+    public static addCanvas(canvasesToAdd: Canvases): void {
         
         for (const name in canvasesToAdd) {
             
@@ -62,7 +60,7 @@ class Engine {
      * 
      * @param canvasesToDelete Delete one canvas or multiple canvases
      */
-    public deleteCanvas(canvasesToDelete: string[]): void {
+    public static deleteCanvas(canvasesToDelete: string[]): void {
 
         for (const name of canvasesToDelete) {
             
@@ -91,7 +89,7 @@ class Engine {
      * 
      * @param options The canvas name to change position and new position to be set
      */
-    public changeCanvasIndex(options: changeCanvasIndexOptions): void {
+    public static changeCanvasIndex(options: changeCanvasIndexOptions): void {
 
         const {
             name,
@@ -119,7 +117,7 @@ class Engine {
      * 
      * @returns The canvas if existing
      */
-    private _getCanvasNameByIndex(index: number): string | void {
+    private static _getCanvasNameByIndex(index: number): string | void {
 
         for (const name in this._canvases) {
 
@@ -138,7 +136,7 @@ class Engine {
      * The canvases will be drawn on top of eachother
      * The upermoste canvas will be drawn on top of all canvases
      */
-    public render(): void {
+    public static render(): void {
 
         const pixelMetadata: PixelsMetadata = this._getCanvasesPixelMetadata();
 
@@ -198,13 +196,13 @@ class Engine {
      * 
      * @returns The concated Pixelmetadata
      */
-    private _getCanvasesPixelMetadata(): PixelsMetadata {
+    private static _getCanvasesPixelMetadata(): PixelsMetadata {
 
         const canvasValues: Canvas[] = this._getCanvas(); 
 
-        const canvasesMetadata: Metadata[] = canvasValues.map(canvas => canvas.getMetadata());
+        const canvasesMetadata: Metadata[] = canvasValues.map((canvas: Canvas): Metadata => canvas.getMetadata());
 
-        const canvasesPixelMetadata: PixelsMetadata[] = canvasesMetadata.map(metadata => metadata.pixelsMetadata);
+        const canvasesPixelMetadata: PixelsMetadata[] = canvasesMetadata.map((metadata: Metadata): PixelsMetadata => metadata.pixelsMetadata);
 
         let concatedPixelMetadata: PixelsMetadata = {};
 
@@ -224,7 +222,7 @@ class Engine {
      * 
      * @param pixelsMetadata2
      */
-    private _concatCanvansesPixelMetadata(pixelsMetadata1: PixelsMetadata, pixelsMetadata2: PixelsMetadata): PixelsMetadata {
+    private static _concatCanvansesPixelMetadata(pixelsMetadata1: PixelsMetadata, pixelsMetadata2: PixelsMetadata): PixelsMetadata {
         pixelsMetadata1 = {
             ...pixelsMetadata2,
             ...pixelsMetadata1
@@ -255,7 +253,7 @@ class Engine {
     /**
      * @returns The array Canvas objects 
      */
-    private _getCanvas(): Canvas[] {
+    private static _getCanvas(): Canvas[] {
         
         const canvasValues: Canvas[] = [];
 

@@ -18,11 +18,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var polygonalChain_1 = __importDefault(require("./polygonalChain"));
 var line_1 = __importDefault(require("./line"));
+/**
+ * The class reperesents a polygon that can be defiend with multiple vertices
+ * @category Primal geometry
+ */
 var Polygon = /** @class */ (function (_super) {
     __extends(Polygon, _super);
+    /**
+     * @param vertices The vertices of the polygon
+     *
+     * @param style The style of the polygon lines
+     */
     function Polygon(vertices, style) {
         return _super.call(this, vertices, style) || this;
     }
+    /**
+     * @returns The lines of the polygon
+     */
     Polygon.prototype._getLines = function () {
         var _this = this;
         var lines = [];

@@ -1,15 +1,20 @@
 "use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var getLinePositions_1 = __importDefault(require("../../utilities/getLinePositions"));
-var getLineWidth_1 = __importDefault(require("../../utilities/getLineWidth"));
-var getLineHeight_1 = __importDefault(require("../../utilities/getLineHeight"));
-var getLineRotation_1 = __importDefault(require("../../utilities/getLineRotation"));
-var getLineLength_1 = __importDefault(require("../../utilities/getLineLength"));
+var mixin_1 = __importDefault(require("../../utilities/mixin"));
+var transform_1 = __importDefault(require("../../transform/transform"));
 /**
- * @class The class represent a Geometry object
+ * The class represent a abstract geometry object that is defiend with vertices
+ * @category Primal geometry
  */
 var Geometry = /** @class */ (function () {
     /**
@@ -91,79 +96,16 @@ var Geometry = /** @class */ (function () {
         return this._origin;
     };
     /**
-     * @param axis The axis to translate on
-     *
-     * @param length The length to translate
-     */
-    Geometry.prototype._translateBasedOnAxis = function (length, axis) {
-        this._origin[axis] += length;
-        this._vertices.map(function (vertice) {
-            vertice[axis] += length;
-            return vertice;
-        });
-    };
-    /**
      * @returns the scale of the geometry
      */
     Geometry.prototype.getScale = function () {
         return this._scale;
     };
     /**
-     *
-     * @param scale The new scale
-     *
-     * @param axis The axis to scale
+     * @returns the rotation of the geometry
      */
-    Geometry.prototype._scaleBasedOnAxis = function (scale, axis) {
-        var _this = this;
-        var lengthType = (axis === "x"
-            ?
-                "width"
-            :
-                "height");
-        var prevScale = this._scale[lengthType];
-        var origin = this._origin[axis];
-        this._vertices.map(function (vertice) {
-            // Vertice position on specific axis
-            var verticePosition = vertice[axis];
-            var getLength = (axis === "x"
-                ?
-                    getLineWidth_1.default
-                :
-                    getLineHeight_1.default);
-            // Length between origin and vertice
-            var length = getLength([_this._origin, vertice]);
-            // original length between origin and vertice on specific axis
-            var originalLength = 1 / prevScale * length;
-            if (verticePosition < origin) {
-                vertice[axis] = origin - originalLength * scale;
-            }
-            if (origin < verticePosition) {
-                vertice[axis] = origin + originalLength * scale;
-            }
-        });
-        // Set new scale on specific axis for the geometry
-        this._scale[lengthType] = scale;
-    };
-    /**
-     * Rotates the geometric shape
-     *
-     * @param degrees the amount of relative rotation in degrees
-     */
-    Geometry.prototype._rotate = function (degrees) {
-        var _this = this;
-        this._vertices = this._vertices.map(function (vertice) {
-            var rotation = getLineRotation_1.default([_this._origin, vertice]);
-            var length = getLineLength_1.default([_this._origin, vertice]);
-            var newRotation = rotation + degrees;
-            var newVertice = getLinePositions_1.default({
-                position: _this._origin,
-                rotation: newRotation,
-                length: length
-            }).end;
-            return newVertice;
-        });
-        this._rotation += degrees;
+    Geometry.prototype.getRotation = function () {
+        return this._rotation;
     };
     /**
      * @returns The style for the geometry lines
@@ -171,6 +113,33 @@ var Geometry = /** @class */ (function () {
     Geometry.prototype.getStyle = function () {
         return this._style;
     };
+    /**
+     * Sets new the style of the line
+     *
+     * @param style the new style
+     */
+    Geometry.prototype.setStyle = function (style) {
+        this._style = style;
+    };
+    /**
+     * Sets the new color of the line
+     *
+     * @param color the new color
+     */
+    Geometry.prototype.setColor = function (color) {
+        this._style.color = color;
+    };
+    /**
+     * Set the new shape
+     *
+     * @param shape The new shape
+     */
+    Geometry.prototype.setShape = function (shape) {
+        this._style.shape = shape;
+    };
+    Geometry = __decorate([
+        mixin_1.default(transform_1.default)
+    ], Geometry);
     return Geometry;
 }());
 exports.default = Geometry;

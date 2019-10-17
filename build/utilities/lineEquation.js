@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * @class The class is used for geting the line equation for x and y based on start end position
+ * The class is used for geting the line equation for x and y based on start end position
+ * @category UtilitieS
  */
 var LineEquation = /** @class */ (function () {
     /**

@@ -18,6 +18,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var geometry_1 = __importDefault(require("./geometry"));
 var _1 = require(".");
+/**
+ * The class reperesents a polygonal chain that is defiend with multiple vertices
+ * @category Primal geometry
+ */
 var PolygonalChain = /** @class */ (function (_super) {
     __extends(PolygonalChain, _super);
     /**
@@ -107,12 +111,10 @@ var PolygonalChain = /** @class */ (function (_super) {
     /**
      * Deletes vertices by index range
      *
-     * @param start the start index
-     *
-     * @param end the end index
+     * @param range the index range (start, end)
      */
-    PolygonalChain.prototype.deleteVerticesByIndexRange = function (_a) {
-        var start = _a[0], end = _a[1];
+    PolygonalChain.prototype.deleteVerticesByIndexRange = function (range) {
+        var start = range[0], end = range[1];
         this._vertices = this._vertices.filter(function (_, index) {
             var willBeDeleted = false;
             for (var indexToDelete = start; indexToDelete <= end; indexToDelete++) {
@@ -186,72 +188,6 @@ var PolygonalChain = /** @class */ (function (_super) {
         this._setLines();
     };
     /**
-     * Sets the scale of the polygonalChain
-     *
-     * @param scale the new scale
-     */
-    PolygonalChain.prototype.scale = function (scale) {
-        this.scaleX(scale);
-        this.scaleY(scale);
-        this._setLines();
-    };
-    /**
-     * Sets the new y scale
-     *
-     * @param scale the new y scale
-     */
-    PolygonalChain.prototype.scaleY = function (scale) {
-        this._scaleBasedOnAxis(scale, "y");
-        this._setLines();
-    };
-    /**
-     * Sets the new x scale
-     *
-     * @param scale the new x scale
-     */
-    PolygonalChain.prototype.scaleX = function (scale) {
-        this._scaleBasedOnAxis(scale, "x");
-        this._setLines();
-    };
-    /**
-     * Translates the position of polygonalChain
-     *
-     * @param positionAdd the added position to current location
-     */
-    PolygonalChain.prototype.translate = function (positionAdd) {
-        var x = positionAdd.x, y = positionAdd.y;
-        this.translateX(x);
-        this.translateY(y);
-        this._setLines();
-    };
-    /**
-     * Translate x position of polygonalChain
-     *
-     * @param xAdd the added x position
-     */
-    PolygonalChain.prototype.translateX = function (xAdd) {
-        this._translateBasedOnAxis(xAdd, "x");
-        this._setLines();
-    };
-    /**
-     * Translate y position of polygonalChain
-     *
-     * @param yAdd the added y position
-     */
-    PolygonalChain.prototype.translateY = function (yAdd) {
-        this._translateBasedOnAxis(yAdd, "y");
-        this._setLines();
-    };
-    /**
-     * Rotates the polygonalChain reletivly
-     *
-     * @param degrees the added rotation to the current rotation
-     */
-    PolygonalChain.prototype.rotate = function (degrees) {
-        this._rotate(degrees);
-        this._setLines();
-    };
-    /**
      * @returns the pixels of the polygonalChain
      */
     PolygonalChain.prototype.getPixels = function () {
@@ -262,10 +198,14 @@ var PolygonalChain = /** @class */ (function (_super) {
         return pixels;
     };
     /**
-     * @returns The vertices of polygonalChain
+     * @param vertices set the new vertices
      */
-    PolygonalChain.prototype.getVertices = function () {
-        return this._vertices;
+    PolygonalChain.prototype.setVertices = function (vertices) {
+        var errorMessage = ("\n        Wrong argument for the method setVertices, the argument should be Position Array of size " + this._vertices.length + "\n        ").trim();
+        if (vertices.length !== this._vertices.length)
+            throw Error(errorMessage);
+        this._vertices = vertices;
+        this._setLines();
     };
     return PolygonalChain;
 }(geometry_1.default));

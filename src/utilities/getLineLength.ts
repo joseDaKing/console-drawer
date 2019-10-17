@@ -2,11 +2,11 @@ import getLineWidth from "./getLineWidth";
 
 import getLineHeight from "./getLineHeight";
 
-import { LinePosition } from "../geometry/primal/line";
+import {LinePosition} from "../types";
 
 /**
  * Get the line length based on 2 positions of the line
- * 
+ * @category UtilitieS
  * @param positions Is array of start and end positions
  */
 const getLineLength = (positions: LinePosition): number => {

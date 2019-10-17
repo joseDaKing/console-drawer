@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Get line height based on 2 positions of the line
- *
+ * @category UtilitieS
  * @param positions Is array of start and end positions
  */
 var getLineHeight = function (positions) {

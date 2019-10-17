@@ -1,14 +1,12 @@
 // Imports
-import {
-    Position,
-    Style
-} from "../types";
+import { Position, Style } from "../types";
 
 
 // Code
 
 /**
- * @class Used for definning a pixel in canvas.
+ * Used for definning a pixel in canvas
+ * @category Graphic class
  */
 class Pixel {
     

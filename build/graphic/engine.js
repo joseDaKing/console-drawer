@@ -17,19 +17,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var ansi_colors_1 = __importDefault(require("ansi-colors"));
 // Code
 /**
- * @class Used for rendering a canvas
+ * Used for rendering a canvas
+ * @category Graphic class
  */
 var Engine = /** @class */ (function () {
     function Engine() {
-        this._canvases = {};
-        this._canvasAmount = 0;
     }
     /**
      * Used for Adding one canvas or multiple canvanses
      *
      * @param canvasesToAdd Add one canvas or multipple canvases
      */
-    Engine.prototype.addCanvas = function (canvasesToAdd) {
+    Engine.addCanvas = function (canvasesToAdd) {
         for (var name_1 in canvasesToAdd) {
             var canvas = canvasesToAdd[name_1];
             this._canvases[name_1] = {
@@ -44,7 +43,7 @@ var Engine = /** @class */ (function () {
      *
      * @param canvasesToDelete Delete one canvas or multiple canvases
      */
-    Engine.prototype.deleteCanvas = function (canvasesToDelete) {
+    Engine.deleteCanvas = function (canvasesToDelete) {
         for (var _i = 0, canvasesToDelete_1 = canvasesToDelete; _i < canvasesToDelete_1.length; _i++) {
             var name_2 = canvasesToDelete_1[_i];
             delete this._canvases[name_2];
@@ -63,7 +62,7 @@ var Engine = /** @class */ (function () {
      *
      * @param options The canvas name to change position and new position to be set
      */
-    Engine.prototype.changeCanvasIndex = function (options) {
+    Engine.changeCanvasIndex = function (options) {
         var name = options.name, index = options.index;
         // Canvas name of given index
         var indexCanvasName = this._getCanvasNameByIndex(index);
@@ -81,7 +80,7 @@ var Engine = /** @class */ (function () {
      *
      * @returns The canvas if existing
      */
-    Engine.prototype._getCanvasNameByIndex = function (index) {
+    Engine._getCanvasNameByIndex = function (index) {
         for (var name_4 in this._canvases) {
             var canvasIndex = this._canvases[name_4].index;
             if (canvasIndex === index) {
@@ -94,7 +93,7 @@ var Engine = /** @class */ (function () {
      * The canvases will be drawn on top of eachother
      * The upermoste canvas will be drawn on top of all canvases
      */
-    Engine.prototype.render = function () {
+    Engine.render = function () {
         var pixelMetadata = this._getCanvasesPixelMetadata();
         var _a = this._getCanvas()[this._canvasAmount - 1].getMetadata(), size = _a.size, blankStyle = _a.blankStyle;
         var height = size.height, width = size.width;
@@ -126,7 +125,7 @@ var Engine = /** @class */ (function () {
      *
      * @returns The concated Pixelmetadata
      */
-    Engine.prototype._getCanvasesPixelMetadata = function () {
+    Engine._getCanvasesPixelMetadata = function () {
         var canvasValues = this._getCanvas();
         var canvasesMetadata = canvasValues.map(function (canvas) { return canvas.getMetadata(); });
         var canvasesPixelMetadata = canvasesMetadata.map(function (metadata) { return metadata.pixelsMetadata; });
@@ -145,7 +144,7 @@ var Engine = /** @class */ (function () {
      *
      * @param pixelsMetadata2
      */
-    Engine.prototype._concatCanvansesPixelMetadata = function (pixelsMetadata1, pixelsMetadata2) {
+    Engine._concatCanvansesPixelMetadata = function (pixelsMetadata1, pixelsMetadata2) {
         pixelsMetadata1 = __assign(__assign({}, pixelsMetadata2), pixelsMetadata1);
         pixelsMetadata2 = __assign(__assign({}, pixelsMetadata1), pixelsMetadata2);
         var newPixelMetadata = {};
@@ -159,7 +158,7 @@ var Engine = /** @class */ (function () {
     /**
      * @returns The array Canvas objects
      */
-    Engine.prototype._getCanvas = function () {
+    Engine._getCanvas = function () {
         var canvasValues = [];
         for (var canvasName in this._canvases) {
             var canvas = this._canvases[canvasName].canvas;
@@ -167,6 +166,8 @@ var Engine = /** @class */ (function () {
         }
         return canvasValues;
     };
+    Engine._canvases = {};
+    Engine._canvasAmount = 0;
     return Engine;
 }());
 ;
